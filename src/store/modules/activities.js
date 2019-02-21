@@ -7,7 +7,7 @@ var struct = [
   { text: 'Nombre', value: 'name' },
   { text: 'Descripción', value: 'description' },
   { text: 'Sector', value: 'sector.name' },
-  { text: 'Acciones', align: 'center', value: ''}
+  { text: 'Acciones', align: 'center', value: '' }
 ]
 
 export default {
