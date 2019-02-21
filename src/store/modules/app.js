@@ -1,7 +1,7 @@
 const app = {
   sidemenu:
   [
-    {
+    /* {
       title: 'Estudio de datos',
       routes: [{
         icon: 'assessment',
@@ -16,7 +16,7 @@ const app = {
         title: 'Listado',
         route: 'projects'
       }]
-    },
+    }, */
     {
       title: 'Ubicaciones',
       routes: [{
