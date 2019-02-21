@@ -4,7 +4,7 @@
       <v-toolbar-title hidden-md-and-down class="text-capitalize">{{ viewNameESP }}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn :to="'/trashed?m='+viewName" color="error" flat class="mb-2">PAPELERA</v-btn>
-      <v-dialog v-model="dialog" max-width="500px">
+      <v-dialog v-model="dialog" max-width="600px">
         <v-btn slot="activator" color="primary" flat class="mb-2">Nuevas {{ viewNameESP }}</v-btn>
         <v-card>
           <v-card-title>
@@ -119,7 +119,9 @@
         pagination: {},
         dialog: false,
         editedIndex: -1,
-        viewNameESP: 'Actividades'
+        viewNameESP: 'Actividades',
+        editedItem: {},
+        defaultItem: {}
       }
     },
     methods: {
@@ -142,7 +144,7 @@
         setTimeout(() => {
           this.editedItem = Object.assign({}, this.defaultItem)
           this.editedIndex = -1
-        }, 1500)
+        }, 300)
       },
       save () {
         this.$validator.validate().then(result => {
@@ -155,7 +157,9 @@
             }
 
             if (this.editedIndex > -1) {
+              Object.assign(this.list[this.editedIndex], this.editedItem)
               this.$store.dispatch('updateOne', params)
+              this.$store.dispatch('getAll', {state: this.viewName})
             } else {
               this.$store.dispatch('create', params)
             }
@@ -174,7 +178,7 @@
         return this.$store.state[this.viewName].struct
       },
       list () {
-        return this.$store.getters.getAll('activities')
+        return this.$store.state.activities.all
       },
       sectors () {
         return this.$store.getters.getAll('sectors')
@@ -192,18 +196,6 @@
       formTitle () {
         var title = this.editedIndex === -1 ? 'Nueva ' : 'Editar '
         return title + 'Actividad'
-      },
-      defaultItem () {
-        return this.$store.state[this.viewName].defaultItem
-      },
-      editedItem: {
-        get () {
-          return this.$store.state[this.viewName].editedItem
-        },
-        set (value) {
-          this.$store.state[this.viewName].editedItem = value
-          return this.$store.state[this.viewName].editedItem
-        }
       }
     }
 }

@@ -36,17 +36,9 @@ export default new Vuex.Store({
   },
   getters: {
     getAll: (state) => (stateName) => {
-      state[stateName].all.forEach((element, i) => {
-        state[stateName].all[i].in = i
-      })
-
       return state[stateName].all
     },
     getAllTrashed: (state) => (stateName) => {
-      state[stateName].trashed.forEach((element, i) => {
-        state[stateName].trashed[i].in = i
-      })
-
       return state[stateName].trashed
     }
   },

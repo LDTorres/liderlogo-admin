@@ -159,7 +159,7 @@
         setTimeout(() => {
           this.editedItem = Object.assign({}, this.defaultItem)
           this.editedIndex = -1
-        }, 1500)
+        }, 300)
       },
       save () {
         this.$validator.validate().then(result => {
@@ -178,6 +178,7 @@
                 const price = this.editedItem.prices[i]
                 price.value = parseFloat(price.value)
               }
+              Object.assign(this.list[this.editedIndex], this.editedItem)
               this.$store.dispatch('updateOne', params)
             } else {
               this.editedItem.prices = []

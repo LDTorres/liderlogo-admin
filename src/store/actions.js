@@ -43,33 +43,28 @@ export default {
   },
   async updateOne ({ commit }, params) {
     await axios.put('/' + params.state + '/' + params.item.id, params.item).then((res) => {
-      params.res = res.data
       commit('UPDATE_ONE', params)
     }).catch(() => {})
   },
   async deleteOne ({ commit }, params) {
     await axios.delete('/' + params.state + '/' + params.item.id).then((res) => {
-      params.res = res.data
       commit('DELETE_ONE', params)
     }).catch(() => {})
   },
   async getAllTrashed ({ commit }, params) {
     await axios.get('/' + params.state + '/trashed').then((res) => {
       if (res.data === null) return
-
       params.res = res.data
       commit('GET_ALL_TRASHED', params)
     }).catch(() => {})
   },
   async restore ({ commit }, params) {
     await axios.put('/' + params.state + '/' + params.item.id + '/restore').then((res) => {
-      params.res = res.data
       commit('RESTORE', params)
     }).catch(() => {})
   },
   async trash ({ commit }, params) {
     await axios.delete('/' + params.state + '/' + params.item.id + '?trash=true').then((res) => {
-      params.res = res.data
       commit('TRASH', params)
     }).catch(() => {})
   }

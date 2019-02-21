@@ -262,6 +262,7 @@
 
             if (this.editedIndex > -1) {
               params.edited = true
+              Object.assign(this.list[this.editedIndex], this.editedItem)
               this.$store.dispatch('portfolios/updateOne', params)
             } else {
               this.$store.dispatch('portfolios/create', params)

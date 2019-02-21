@@ -141,7 +141,7 @@
         setTimeout(() => {
           this.editedItem = Object.assign({}, this.defaultItem)
           this.editedIndex = -1
-        }, 1500)
+        }, 300)
       },
       save () {
         this.$validator.validate().then(result => {
@@ -156,6 +156,7 @@
             }
 
             if (this.editedIndex > -1) {
+              Object.assign(this.list[this.editedIndex], this.editedItem)
               this.$store.dispatch('updateOne', params)
             } else {
               this.$store.dispatch('create', params)

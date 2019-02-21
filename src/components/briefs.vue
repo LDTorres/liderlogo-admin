@@ -175,7 +175,7 @@
         setTimeout(() => {
           this.editedItem = Object.assign({}, this.defaultItem)
           this.editedIndex = -1
-        }, 1500)
+        }, 300)
       }
     },
     watch: {

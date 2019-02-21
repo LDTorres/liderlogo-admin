@@ -16,7 +16,12 @@ export const mutations = {
     state[data.state].all.unshift(data.res)
   },
   UPDATE_ONE (state, data) {
-    state[data.state].all[data.item.in] = data.item
+    state[data.state].all.forEach((el, i) => {
+      if (el.id === data.item.id) {
+        state[data.state].all[i] = data.item
+        console.log(state[data.state].all[i])
+      }
+    })
   },
   DELETE_ONE (state, data) {
     state[data.state].all.splice(data.item.index, 1)
