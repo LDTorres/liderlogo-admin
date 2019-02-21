@@ -159,7 +159,6 @@
             if (this.editedIndex > -1) {
               Object.assign(this.list[this.editedIndex], this.editedItem)
               this.$store.dispatch('updateOne', params)
-              this.$store.dispatch('getAll', {state: this.viewName})
             } else {
               this.$store.dispatch('create', params)
             }
