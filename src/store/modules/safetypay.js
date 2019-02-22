@@ -28,7 +28,7 @@ export default {
   },
   actions: {
     async getAll ({commit}) {
-      await axios.get(route + '/notifications').then((res) => {
+      await axios.post(route + '/notifications', {}).then((res) => {
         commit('GET_ALL', res.data)
       }).catch(() => {})
     },
