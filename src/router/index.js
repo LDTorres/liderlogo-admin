@@ -23,7 +23,7 @@ import portfolios from '@/components/portfolios'
 import trashed from '@/components/trashed'
 import projects from '@/components/projects'
 import leads from '@/components/leads'
-import safetypay from '@/components/safetypay'
+/* import safetypay from '@/components/safetypay' */
 
 Vue.use(Router)
 
@@ -117,12 +117,12 @@ var instance = new Router({
       component: users,
       props: (route) => ({ search: route.query.q })
     },
-    {
+    /* {
       path: '/safetypay',
       name: 'safetypay',
       component: safetypay,
       props: (route) => ({ search: route.query.q })
-    },
+    }, */
     {
       path: '/leads',
       name: 'leads',
